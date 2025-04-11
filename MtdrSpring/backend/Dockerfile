@@ -3,10 +3,10 @@ FROM maven:3.8.6-openjdk-11-slim AS build
 WORKDIR /app
 
 # Copiar archivos de Maven primero (para aprovechar la caché de Docker)
-COPY ./pom.xml .
+COPY pom.xml .
 
 # Copiar el código fuente y recursos
-COPY ./src ./src
+COPY src ./src
 
 # Construir la aplicación y omitir pruebas
 RUN mvn clean package -DskipTests
@@ -19,8 +19,8 @@ WORKDIR /app
 # Copiar el JAR construido desde la etapa anterior
 COPY --from=build /app/target/*.jar app.jar
 
-# Copiar la wallet desde el proyecto al contenedor
-COPY ./src/main/resources/wallet /app/wallet
+# Copiar la wallet - corregida la ruta para el contexto correcto
+COPY src/main/resources/wallet /app/wallet
 
 # Variables de entorno
 ENV SERVER_PORT=8081
