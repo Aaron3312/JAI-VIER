@@ -11,8 +11,8 @@ on:
 env:
   # Usa docker.io para DockerHub
   REGISTRY: docker.io
-  # Tu usuario/organización de DockerHub
-  IMAGE_NAME: ${{ github.repository_owner }}/jai-vier-backend
+  # Usuario/organización específico de DockerHub
+  IMAGE_NAME: a01642529/jai-vier-backend
   
 jobs:
   build-and-push:
