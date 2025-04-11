@@ -119,3 +119,13 @@ mvn spring-boot:run
 ```bash
 mvn spring-boot:run -Dspring-boot.run.arguments=--debug
 ```
+
+### DOCKER Download and run container:
+
+```bash
+# Paso 1: Descargar la imagen de Docker Hub
+docker pull a01642529/jai-vier-backend:latest
+
+# Paso 2: Ejecutar el contenedor
+docker run -p 8081:8081 a01642529/jai-vier-backend:latest
+```
