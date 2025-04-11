@@ -123,9 +123,19 @@ mvn spring-boot:run -Dspring-boot.run.arguments=--debug
 ### DOCKER Download and run container:
 
 ```bash
-# Paso 1: Descargar la imagen de Docker Hub
+#!/bin/bash
+# Descargar la imagen
 docker pull a01642529/jai-vier-backend:latest
 
-# Paso 2: Ejecutar el contenedor
-docker run -p 8081:8081 a01642529/jai-vier-backend:latest
+# Ejecutar el contenedor con variables de entorno para la base de datos
+docker run -p 8081:8081 \
+  -e SPRING_DATASOURCE_URL="tu_url_de_conexion?TNS_ADMIN=/app/wallet" \
+  -e SPRING_DATASOURCE_USERNAME="TODOUSER" \
+  -e SPRING_DATASOURCE_PASSWORD="tu_contraseña_de_wallet" \
+  -e TELEGRAM_BOT_TOKEN="tu_token_de_telegram" \
+  --name jaiver-backend \
+  a01642529/jai-vier-backend:latest
+
+# Verificar los logs del contenedor
+docker logs -f jaiver-backend
 ```
