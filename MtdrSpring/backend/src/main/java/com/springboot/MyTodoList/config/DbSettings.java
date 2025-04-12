@@ -1,10 +1,12 @@
 package com.springboot.MyTodoList.config;
 
-
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-// This is only used for local testing.
+/**
+ * Esta clase mapea las propiedades de spring.datasource desde application.properties
+ * Permite flexibilidad para usar variables de entorno o valores predeterminados.
+ */
 @Configuration
 @ConfigurationProperties(prefix = "spring.datasource")
 public class DbSettings {
